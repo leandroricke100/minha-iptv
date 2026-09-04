@@ -82,7 +82,6 @@ def parse_playlist(text):
     lines = text.splitlines()
 
     channels = []
-
     current_info = None
 
     for line in lines:
@@ -141,13 +140,7 @@ def stream_works(url):
             if 200 <= status < 400:
                 return True
 
-    except (
-        urllib.error.URLError,
-        urllib.error.HTTPError,
-        TimeoutError,
-        ConnectionError,
-        ValueError
-    ):
+    except Exception:
         return False
 
     return False
